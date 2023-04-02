@@ -117,15 +117,6 @@ internal sealed class DebugThing : MelonMod
                 displayTouched = SearchedCON + "";
                 displayFound = FoundCon - 1 + "";
                 displayCurrent = CurrentCON + "";
-
-                if (ContainerManager.m_Containers[CurrentCON].m_Inspected)
-                {
-                    styleObjName.normal.textColor = Color.gray;
-                }
-                else
-                {
-                    styleObjName.normal.textColor = Color.white;
-                }
             }
 
             GUI.Label(new Rect(Xoffset, 18 + offset * 1, 500, 100), "Touched containers: " + displayTouched, styleGeneral);
