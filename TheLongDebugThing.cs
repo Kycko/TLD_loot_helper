@@ -382,7 +382,7 @@ internal sealed class DebugThing : MelonMod
         if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.F4))
         {
             Il2CppArrayBase<LoadScene> SC = Resources.FindObjectsOfTypeAll<LoadScene>();
-            Console.WriteLine("---------------------------------------------------------------------------------------");
+            MelonLogger.Msg("[My LH] ---------------------------------------------------------------------------------------");
 
             int max_num       = 0;
             int max_name_len  = 0;
@@ -411,13 +411,13 @@ internal sealed class DebugThing : MelonMod
             {
                 int NUM = i + 1;
                 int num_spaces = max_num.ToString().Length - NUM.ToString().Length;
-                Console.Write(NUM + string.Concat(Enumerable.Repeat(" ", num_spaces)) + " || ");
+                string ItemText = "[My LH] " + NUM + string.Concat(Enumerable.Repeat(" ", num_spaces)) + " || ";
 
                 int name_spaces = max_name_len - SC[i].m_ExitPointName.Length;
-                Console.Write(SC[i].m_ExitPointName + string.Concat(Enumerable.Repeat(" ", name_spaces)) + " || ");
+                ItemText += SC[i].m_ExitPointName + string.Concat(Enumerable.Repeat(" ", name_spaces)) + " || ";
 
                 int scene_spaces = max_scene_len - SC[i].m_SceneToLoad.Length;
-                Console.Write(SC[i].m_SceneToLoad + string.Concat(Enumerable.Repeat(" ", scene_spaces)) + " || ");
+                ItemText += SC[i].m_SceneToLoad + string.Concat(Enumerable.Repeat(" ", scene_spaces)) + " || ";
 
                 string bunk_text = "       || ";
                 if (SC[i].m_ExitPointName.Contains("PrepperCache") |
@@ -427,19 +427,19 @@ internal sealed class DebugThing : MelonMod
                 {
                     bunk_text = "BUNKER || ";
                 }
-                Console.Write(bunk_text);
+                ItemText += bunk_text;
 
                 string X = SC[i].transform.position.x.ToString().Split(",")[0];
                 string Z = SC[i].transform.position.z.ToString().Split(",")[0];
                 int xspaces = 6 - X.Length;
                 int zspaces = 6 - Z.Length;
-                Console.Write(X + string.Concat(Enumerable.Repeat(" ", xspaces)));
-                Console.Write(Z + string.Concat(Enumerable.Repeat(" ", zspaces)));
+                ItemText += X + string.Concat(Enumerable.Repeat(" ", xspaces));
+                ItemText += Z + string.Concat(Enumerable.Repeat(" ", zspaces));
 
-                Console.WriteLine();
+                MelonLogger.Msg(ItemText);
                 i++;
             }
-            Console.WriteLine("---------------------------------------------------------------------------------------");
+            MelonLogger.Msg("[My LH] ---------------------------------------------------------------------------------------");
         }
         if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.F5))
         {
