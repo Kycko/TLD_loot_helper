@@ -55,7 +55,7 @@ internal sealed class DebugThing : MelonMod
 
             for (int i = 0; i < POS.Length; i++)
             {
-                IND[i] = POS[i].IndexOf(",") + 4;
+                IND[i] = POS[i].IndexOf(",") + 5;
                 if (IND[i] > POS[i].Length)
                 {
                     IND[i] = POS[i].Length;
