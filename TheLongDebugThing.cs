@@ -78,24 +78,26 @@ internal sealed class DebugThing : MelonMod
         }
         else
         {
-            GUI.Box(new Rect(Xoffset - 9, 8, 350, 508), "");
+            GUI.Box(new Rect(Xoffset - 9, 8, 350, 545), "");
 
             GUI.Label(new Rect(Xoffset, 13, 500, 100), Title, styleTitle);
             GUI.Label(new Rect(Xoffset, 18 + offset * 6, 500, 100), "-----------------------------------------", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 7, 500, 100), "F2 - Scan for objects", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 8, 500, 100), "F3 - Toggle inspect mode", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 7, 500, 100), "F2 [LT] - Scan for objects", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 8, 500, 100), "F3 [X+LT] - Toggle inspect mode", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 9, 500, 100), "F4 - List all scene transitions", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 10, 500, 100), "→ - Select next", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 11, 500, 100), "← - Select previous", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 12, 500, 100), "↑ - Teleport to selected", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 13, 500, 100), "F5 - Toggle fly", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 10, 500, 100), "→ [→] - Select next", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 11, 500, 100), "← [←] - Select previous", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 12, 500, 100), "↑ [↑] - Teleport to selected", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 13, 500, 100), "F5 [=] - Toggle fly", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 14, 500, 100), "F6 - GOD MODE", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 15, 500, 100), "F7 - Add lantern fuel", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 16, 500, 100), "F11 - Get INIT gears & commands", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 17, 500, 100), "F12 - Hide this menu", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 18, 500, 100), "Delete - Random weather", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 19, 500, 100), "L - Look at selected", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 19, 500, 100), "L [↓] - Look at selected", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 20, 500, 100), "P - Copy position", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 21, 500, 100), "[RT] и [X+RT] - fly speed", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 22, 500, 100), "[↓RJ] - stop flying", styleGeneral);
             
             if ((!ContainerMode && Found == 0) || (ContainerMode && FoundCon == 0))
             {
