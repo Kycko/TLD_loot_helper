@@ -99,6 +99,26 @@ internal sealed class DebugThing : MelonMod
             GUI.Label(new Rect(Xoffset, 18 + offset * 21, 500, 100), "[RT] и [X+RT] - fly speed", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 22, 500, 100), "[↓RJ] - stop flying", styleGeneral);
             
+            if (!ContainerMode && _GEARS != null && _GEARS.Count != 0)
+            {
+                GUI.Box(new Rect(Xoffset - 9, 34 + offset * 23, 350, 480), "");
+
+                GUI.Label(new Rect(Xoffset + 6, 18 + offset * 24, 500, 100), "=Found gears=", styleTitle);
+                for (int i = 0; i < Found; i++)
+                {
+                    string space = "";
+                    if (i < 10)
+                    {
+                        space = " ";
+                    }
+                    if (_GEARS[i] != null)
+                    {
+                        GUI.Label(new Rect(Xoffset, 22 + offset * (25 + i), 500, 100), space + i + ". " + _GEARS[i].name, styleGeneral);
+                    }
+                }
+                    
+            }
+
             if ((!ContainerMode && Found == 0) || (ContainerMode && FoundCon == 0))
             {
                 GUI.Label(new Rect(Xoffset, 18 + offset * 1, 500, 100), "Press F2 to do first scan", styleGeneral);
