@@ -15,17 +15,17 @@ internal sealed class DebugThing : MelonMod
             return;
         }
         int Xoffset = 16;
-        int offset = 23;
+        int offset = 17;
         bool shortstyle = false;
         float ConsoleY = 0;
 
         GUIStyle styleTitle = new();
-        styleTitle.fontSize = 20;
+        styleTitle.fontSize = 16;
         GUIStyle styleGeneral = new();
-        styleGeneral.fontSize = 17;
+        styleGeneral.fontSize = 13;
         styleGeneral.normal.textColor = Color.white;
         GUIStyle styleObjName = new();
-        styleObjName.fontSize = 17;
+        styleObjName.fontSize = 13;
         styleObjName.normal.textColor = Color.white;
 
         string Title = "=Gears inspector=";
@@ -72,13 +72,13 @@ internal sealed class DebugThing : MelonMod
         }
         if (shortstyle)
         {
-            GUI.Box(new Rect(Xoffset - 9, 8 + ConsoleY, 340, 55), "");
+            GUI.Box(new Rect(Xoffset - 9, 8 + ConsoleY, 290, 55), "");
             GUI.Label(new Rect(Xoffset, 15 + ConsoleY, 500, 100), nameTxt, styleGeneral);
             GUI.Label(new Rect(Xoffset, 38 + ConsoleY, 500, 100), posTxt, styleGeneral);
         }
         else
         {
-            GUI.Box(new Rect(Xoffset - 9, 8, 350, 545), "");
+            GUI.Box(new Rect(Xoffset - 9, 8, 290, 407), "");
 
             GUI.Label(new Rect(Xoffset, 13, 500, 100), Title, styleTitle);
             GUI.Label(new Rect(Xoffset, 18 + offset * 6, 500, 100), "-----------------------------------------", styleGeneral);
@@ -103,7 +103,7 @@ internal sealed class DebugThing : MelonMod
             {
                 GUI.Box(new Rect(Xoffset - 9, 34 + offset * 23, 350, 480), "");
 
-                GUI.Label(new Rect(Xoffset + 6, 18 + offset * 24, 500, 100), "=Found gears=", styleTitle);
+                GUI.Label(new Rect(Xoffset + 6, 22 + offset * 24, 500, 100), "=Found gears=", styleTitle);
                 for (int i = 0; i < Found; i++)
                 {
                     string space = "";
@@ -113,7 +113,7 @@ internal sealed class DebugThing : MelonMod
                     }
                     if (_GEARS[i] != null)
                     {
-                        GUI.Label(new Rect(Xoffset, 22 + offset * (25 + i), 500, 100), space + i + ". " + _GEARS[i].name, styleGeneral);
+                        GUI.Label(new Rect(Xoffset, 25 + offset * (25 + i), 500, 100), space + i + ". " + _GEARS[i].name, styleGeneral);
                     }
                 }
                     
@@ -473,7 +473,7 @@ internal sealed class DebugThing : MelonMod
         }
         if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.F7))
         {
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_JerrycanRusty", 1);
+            uConsole.RunCommandSilent("add GEAR_JerrycanRusty");
             HUDMessage.AddMessage("Lamp fuel [ADDE78]added[-]");
         }
         if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.F11))
@@ -481,27 +481,46 @@ internal sealed class DebugThing : MelonMod
             // пробовал сделать цикл с такой командой, ключи не добавляются
 
             // инструменты для открывания и осмотра
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_Hacksaw", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_Hacksaw", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_Hatchet", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_JerrycanRusty", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_KeroseneLampB", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_Prybar", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_Prybar", 1);
-            
+            uConsole.RunCommandSilent("add GEAR_Hacksaw");
+            uConsole.RunCommandSilent("add GEAR_Hacksaw");
+            uConsole.RunCommandSilent("add GEAR_Hatchet");
+            uConsole.RunCommandSilent("add GEAR_JerrycanRusty");
+            uConsole.RunCommandSilent("add GEAR_KeroseneLampB");
+            uConsole.RunCommandSilent("add GEAR_Prybar");
+            uConsole.RunCommandSilent("add GEAR_Prybar");
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_Hacksaw", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_Hacksaw", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_Hatchet", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_JerrycanRusty", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_KeroseneLampB", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_Prybar", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_Prybar", 1);
+
             // ключи от фермы и новых ящиков
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_MountainTownFarmKey", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_BIKey1", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_BIKey2", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_BRKey1", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_BRKey2", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteACKey1", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteBlackrockKey3", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteDPKey1", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteHRVKey1", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteMTKey1", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteMLKey2", 1);
-            GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteMLKey3", 1);
+            uConsole.RunCommandSilent("add GEAR_MountainTownFarmKey");
+            uConsole.RunCommandSilent("add GEAR_BIKey1");
+            uConsole.RunCommandSilent("add GEAR_BIKey2");
+            uConsole.RunCommandSilent("add GEAR_BRKey1");
+            uConsole.RunCommandSilent("add GEAR_BRKey2");
+            uConsole.RunCommandSilent("add GEAR_VisorNoteACKey1");
+            uConsole.RunCommandSilent("add GEAR_VisorNoteBlackrockKey3");
+            uConsole.RunCommandSilent("add GEAR_VisorNoteDPKey1");
+            uConsole.RunCommandSilent("add GEAR_VisorNoteHRVKey1");
+            uConsole.RunCommandSilent("add GEAR_VisorNoteMTKey1");
+            uConsole.RunCommandSilent("add GEAR_VisorNoteMLKey2");
+            uConsole.RunCommandSilent("add GEAR_VisorNoteMLKey3");
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_MountainTownFarmKey", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_BIKey1", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_BIKey2", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_BRKey1", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_BRKey2", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteACKey1", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteBlackrockKey3", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteDPKey1", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteHRVKey1", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteMTKey1", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteMLKey2", 1);
+            // GameManager.GetPlayerManagerComponent().AddItemCONSOLE("GEAR_VisorNoteMLKey3", 1);
 
             // Ghost & GOD mode
             ConsoleManager.CONSOLE_ghost();
