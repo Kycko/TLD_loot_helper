@@ -283,6 +283,7 @@ internal sealed class DebugThing : MelonMod
                 List<string> Filter = new List<string>
                     {
                         "GEAR_BedRoll",
+                        "GEAR_BedRoll_Down",
                         "GEAR_CanOpener",
                         "GEAR_EmergencyStim",
                         "GEAR_Firestriker",
