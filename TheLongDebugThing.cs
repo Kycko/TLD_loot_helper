@@ -88,13 +88,13 @@ internal sealed class DebugThing : MelonMod
             GUI.Label(new Rect(Xoffset, 18 + offset * 10, 500, 100), "→ [→] - Select next", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 11, 500, 100), "← [←] - Select previous", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 12, 500, 100), "↑ [↑] - Teleport to selected", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 13, 500, 100), "F5 [=] - Toggle fly", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 14, 500, 100), "F6 - GOD MODE", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 15, 500, 100), "F7 - Add lantern fuel", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 16, 500, 100), "F11 - Get INIT gears & commands", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 17, 500, 100), "F12 - Hide this menu", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 18, 500, 100), "Delete - Random weather", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 19, 500, 100), "L [↓] - Look at selected", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 13, 500, 100), "↓ [↓] - Look at selected", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 14, 500, 100), "F5 [=] - Toggle fly", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 15, 500, 100), "F6 - GOD MODE", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 16, 500, 100), "F7 - Add lantern fuel", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 17, 500, 100), "F11 - Get INIT gears & commands", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 18, 500, 100), "F12 - Hide this menu", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 19, 500, 100), "Delete - Random weather", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 20, 500, 100), "P - Copy position", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 21, 500, 100), "[RT] и [X+RT] - fly speed", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 22, 500, 100), "[↓RJ] - stop flying", styleGeneral);
@@ -272,6 +272,10 @@ internal sealed class DebugThing : MelonMod
             {
                 GoToObject(CurrentCON);
             }
+        }
+        if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.DownArrow))
+        {
+            LookAt();
         }
         if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.F2))
         {
@@ -535,10 +539,6 @@ Ghost & GOD mode [ADDE78]switched[-]");
         if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.F12))
         {
             RenderMenu = !RenderMenu;
-        }
-        if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.L))
-        {
-            LookAt();
         }
         if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.P))
         {
