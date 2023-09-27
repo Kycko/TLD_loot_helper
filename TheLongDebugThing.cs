@@ -102,8 +102,8 @@ internal sealed class DebugThing : MelonMod
             if (!ContainerMode && _GEARS != null && _GEARS.Count != 0)
             {
                 GUI.Box(new Rect(Xoffset - 9, 34 + offset * 23, 350, 480), "");
-
                 GUI.Label(new Rect(Xoffset + 6, 22 + offset * 24, 500, 100), "=Found gears=", styleTitle);
+
                 for (int i = 0; i < Found; i++)
                 {
                     string space = "";
@@ -116,7 +116,6 @@ internal sealed class DebugThing : MelonMod
                         GUI.Label(new Rect(Xoffset, 25 + offset * (25 + i), 500, 100), space + i + ". " + _GEARS[i].name, styleGeneral);
                     }
                 }
-                    
             }
 
             if ((!ContainerMode && Found == 0) || (ContainerMode && FoundCon == 0))
@@ -304,6 +303,7 @@ internal sealed class DebugThing : MelonMod
                         "GEAR_Rope"
                     };
 
+                string final = "[My LH] ---------------------------------------------------------------------------------------\n";
                 for (int i = 0; i < GearManager.m_Gear.Count; i++)
                 {
                     if (GearManager.m_Gear[i])
@@ -318,6 +318,7 @@ internal sealed class DebugThing : MelonMod
                                 if (Gi.m_LastContainer.gameObject)
                                 {
                                     _GEARS.Add(Gi.m_LastContainer.gameObject);
+                                    final += Gi.m_LastContainer.gameObject.transform.position.x + "::" + Gi.m_LastContainer.gameObject.transform.position.z + "::" + Gi.m_LastContainer.gameObject.transform.position.y + " " + Gi.m_LastContainer.gameObject.name + " " + GiObj.name + "\n";
                                 }
                             }
                             else if (GiObj.activeSelf && Gi && !Gi.m_InPlayerInventory)
@@ -336,6 +337,7 @@ internal sealed class DebugThing : MelonMod
                                 if (!Naaa)
                                 {
                                     _GEARS.Add(GiObj);
+                                    final += GiObj.transform.position.x + "::" + GiObj.transform.position.z + "::" + GiObj.transform.position.y + " " + GiObj.name + "\n";
                                 }
                             }
                         }
@@ -355,6 +357,7 @@ internal sealed class DebugThing : MelonMod
                 else
                 {
                     HUDMessage.AddMessage("Some gear from the filter [ADDE78]found[-]");
+                    MelonLogger.Msg(final);
                 }
             }
             else
