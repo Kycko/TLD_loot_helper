@@ -153,9 +153,10 @@ internal sealed class DebugThing : MelonMod
 
             hover_text = displayCurrent + " / " + displayFound;
         }
-        GUI.Box  (new Rect(1000, 400, 750, 100), "");
-        GUI.Label(new Rect(1230, 410, 700, 40),  hover_text, styleHover);
-        GUI.Label(new Rect(1010, 460, 750, 40),  nameTxt,    styleHover);
+        GUI.Box  (new Rect(1000, 300, 750, 85), "");
+        GUI.Label(new Rect(1030, 310, 700, 40), hover_text, styleHover);
+        GUI.Label(new Rect(1130, 310, 700, 40), posTxt,     styleHover);
+        GUI.Label(new Rect(1010, 350, 750, 40), nameTxt,    styleHover);
     }
     public static int Found = 0;
     public static int FoundCon = 0;
