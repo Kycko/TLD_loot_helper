@@ -24,6 +24,9 @@ internal sealed class DebugThing : MelonMod
         GUIStyle styleGeneral = new();
         styleGeneral.fontSize = 13;
         styleGeneral.normal.textColor = Color.white;
+        GUIStyle styleHover = new();
+        styleHover.fontSize = 24;
+        styleHover.normal.textColor = Color.white;
         GUIStyle styleObjName = new();
         styleObjName.fontSize = 13;
         styleObjName.normal.textColor = Color.white;
@@ -70,6 +73,7 @@ internal sealed class DebugThing : MelonMod
         {
             nameTxt = "NOT EXIST ANYMORE!!!";
         }
+        string hover_text = "";
         if (shortstyle)
         {
             GUI.Box(new Rect(Xoffset - 9, 8 + ConsoleY, 290, 55), "");
@@ -146,7 +150,12 @@ internal sealed class DebugThing : MelonMod
 
             GUI.Label(new Rect(Xoffset, 18 + offset * 4, 500, 100), nameTxt, styleObjName);
             GUI.Label(new Rect(Xoffset, 18 + offset * 5, 500, 100), posTxt, styleGeneral);
+
+            hover_text = displayCurrent + " / " + displayFound;
         }
+        GUI.Box  (new Rect(1000, 400, 750, 100), "");
+        GUI.Label(new Rect(1230, 410, 700, 40),  hover_text, styleHover);
+        GUI.Label(new Rect(1010, 460, 750, 40),  nameTxt,    styleHover);
     }
     public static int Found = 0;
     public static int FoundCon = 0;
