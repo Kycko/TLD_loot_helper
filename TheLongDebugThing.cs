@@ -1,6 +1,7 @@
 ﻿using Il2Cpp;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using MelonLoader;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TheLongDebugThing;
@@ -336,7 +337,7 @@ internal sealed class DebugThing : MelonMod
                                 if (Gi.m_LastContainer.gameObject)
                                 {
                                     _GEARS.Add(Gi.m_LastContainer.gameObject);
-                                    final += Gi.m_LastContainer.gameObject.transform.position.x + "::" + Gi.m_LastContainer.gameObject.transform.position.z + "::" + Gi.m_LastContainer.gameObject.transform.position.y + " " + Gi.m_LastContainer.gameObject.name.Replace(" (1)", "") + " " + GiObj.name + "\n";
+                                    final += SaveGameSystem.GetNewestSaveSlotForActiveGame().m_UserDefinedName + " " + Gi.m_LastContainer.gameObject.transform.position.x + "::" + Gi.m_LastContainer.gameObject.transform.position.z + "::" + Gi.m_LastContainer.gameObject.transform.position.y + " " + Gi.m_LastContainer.gameObject.name.Replace(" (1)", "") + " " + GiObj.name + "\n";
                                 }
                             }
                             else if (GiObj.activeSelf && Gi && !Gi.m_InPlayerInventory)
@@ -355,7 +356,7 @@ internal sealed class DebugThing : MelonMod
                                 if (!Naaa)
                                 {
                                     _GEARS.Add(GiObj);
-                                    final += GiObj.transform.position.x + "::" + GiObj.transform.position.z + "::" + GiObj.transform.position.y + " " + GiObj.name + "\n";
+                                    final += SaveGameSystem.GetNewestSaveSlotForActiveGame().m_UserDefinedName + " " + GiObj.transform.position.x + "::" + GiObj.transform.position.z + "::" + GiObj.transform.position.y + " " + GiObj.name + "\n";
                                 }
                             }
                         }
