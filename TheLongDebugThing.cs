@@ -321,7 +321,7 @@ internal sealed class DebugThing : MelonMod
                         "GEAR_Rope"
                     };
 
-                string final = "[My LH] ---------------------------------------------------------------------------------------\n";
+                string final = "[My LH] ---------------------------------------\n";
                 for (int i = 0; i < GearManager.m_Gear.Count; i++)
                 {
                     if (GearManager.m_Gear[i])
@@ -336,7 +336,7 @@ internal sealed class DebugThing : MelonMod
                                 if (Gi.m_LastContainer.gameObject)
                                 {
                                     _GEARS.Add(Gi.m_LastContainer.gameObject);
-                                    final += Gi.m_LastContainer.gameObject.transform.position.x + "::" + Gi.m_LastContainer.gameObject.transform.position.z + "::" + Gi.m_LastContainer.gameObject.transform.position.y + " " + Gi.m_LastContainer.gameObject.name + " " + GiObj.name + "\n";
+                                    final += Gi.m_LastContainer.gameObject.transform.position.x + "::" + Gi.m_LastContainer.gameObject.transform.position.z + "::" + Gi.m_LastContainer.gameObject.transform.position.y + " " + Gi.m_LastContainer.gameObject.name.Replace(" (1)", "") + " " + GiObj.name + "\n";
                                 }
                             }
                             else if (GiObj.activeSelf && Gi && !Gi.m_InPlayerInventory)
