@@ -47,6 +47,7 @@ internal sealed class DebugThing : MelonMod
             ConsoleY = uConsole.m_GUI.m_InputFieldRectTransform.position.y;
         }
         GameObject Obj = GetSelectedObject();
+
         string posTxt = "";
         string nameTxt = "";
         if (Obj != null)
@@ -390,7 +391,7 @@ internal sealed class DebugThing : MelonMod
                                 break;
                             }
                         }
-                        if (!Naaa)
+                        if (!Naaa && ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().enabled)
                         {
                             _CONTAINERS.Add(ContainerManager.m_Containers[i].gameObject);
                             if (ContainerManager.m_Containers[i].m_Inspected)
@@ -400,6 +401,12 @@ internal sealed class DebugThing : MelonMod
                         }
                     }
                 }
+
+                for (int i = 0; i < _CONTAINERS.Count; i++) {
+                    _CONTAINERS[i].GetComponent<Container>().InstantiateContents();
+                    _CONTAINERS[i].GetComponent<Container>().m_Inspected = true;
+                }
+
                 FoundCon = _CONTAINERS.Count;
                 if (_CONTAINERS.Count == 0)
                 {
