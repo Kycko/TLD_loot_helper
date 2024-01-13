@@ -83,7 +83,7 @@ internal sealed class DebugThing : MelonMod
         }
         else
         {
-            GUI.Box(new Rect(Xoffset - 9, 8, 290, 407), "");
+            GUI.Box(new Rect(Xoffset - 9, 8, 290, 424), "");
 
             GUI.Label(new Rect(Xoffset, 13, 500, 100), Title, styleTitle);
             GUI.Label(new Rect(Xoffset, 18 + offset * 6, 500, 100), "-----------------------------------------", styleGeneral);
@@ -101,13 +101,14 @@ internal sealed class DebugThing : MelonMod
             GUI.Label(new Rect(Xoffset, 18 + offset * 18, 500, 100), "F12 - Hide this menu", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 19, 500, 100), "Delete - Random weather", styleGeneral);
             GUI.Label(new Rect(Xoffset, 18 + offset * 20, 500, 100), "P - Copy position", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 21, 500, 100), "[RT] и [X+RT] - fly speed", styleGeneral);
-            GUI.Label(new Rect(Xoffset, 18 + offset * 22, 500, 100), "[↓RJ] - stop flying", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 21, 500, 100), "Right Alt - Save game", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 22, 500, 100), "[RT] и [X+RT] - fly speed", styleGeneral);
+            GUI.Label(new Rect(Xoffset, 18 + offset * 23, 500, 100), "[↓RJ] - stop flying", styleGeneral);
             
             if (!ContainerMode && _GEARS != null && _GEARS.Count != 0)
             {
-                GUI.Box(new Rect(Xoffset - 9, 34 + offset * 23, 350, 480), "");
-                GUI.Label(new Rect(Xoffset + 6, 22 + offset * 24, 500, 100), "=Found gears=", styleTitle);
+                GUI.Box(new Rect(Xoffset - 9, 34 + offset * 24, 350, 480), "");
+                GUI.Label(new Rect(Xoffset + 6, 22 + offset * 25, 500, 100), "=Found gears=", styleTitle);
 
                 for (int i = 0; i < Found; i++)
                 {
@@ -118,7 +119,7 @@ internal sealed class DebugThing : MelonMod
                     }
                     if (_GEARS[i] != null)
                     {
-                        GUI.Label(new Rect(Xoffset, 25 + offset * (25 + i), 500, 100), space + i + ". " + _GEARS[i].name, styleGeneral);
+                        GUI.Label(new Rect(Xoffset, 25 + offset * (26 + i), 500, 100), space + i + ". " + _GEARS[i].name, styleGeneral);
                     }
                 }
             }
@@ -154,10 +155,12 @@ internal sealed class DebugThing : MelonMod
 
             hover_text = displayCurrent + " / " + displayFound;
         }
-        GUI.Box  (new Rect(1000, 300, 750, 85), "");
-        GUI.Label(new Rect(1030, 310, 700, 40), hover_text, styleHover);
-        GUI.Label(new Rect(1130, 310, 700, 40), posTxt,     styleHover);
-        GUI.Label(new Rect(1010, 350, 750, 40), nameTxt,    styleHover);
+
+        //GUI.Box  (new Rect(1000, 300, 750, 85), "");
+        //GUI.Label(new Rect(1030, 310, 700, 40), hover_text, styleHover);
+        //GUI.Label(new Rect(1130, 310, 700, 40), posTxt,     styleHover);
+        //GUI.Label(new Rect(1010, 350, 750, 40), nameTxt,    styleHover);
+
     }
     public static int Found = 0;
     public static int FoundCon = 0;
@@ -287,6 +290,10 @@ internal sealed class DebugThing : MelonMod
         {
             LookAt();
         }
+        if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.RightAlt))
+        {
+            ConsoleManager.CONSOLE_save();
+        }
         if (InputManager.GetKeyDown(InputManager.m_CurrentContext, KeyCode.F2))
         {
             if (!ContainerMode)
@@ -393,18 +400,16 @@ internal sealed class DebugThing : MelonMod
                         }
                         if (!Naaa && ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().enabled)
                         {
+                            ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().InstantiateContents();
+                            ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().m_Inspected = true;
                             _CONTAINERS.Add(ContainerManager.m_Containers[i].gameObject);
+
                             if (ContainerManager.m_Containers[i].m_Inspected)
                             {
                                 SearchedCON++;
                             }
                         }
                     }
-                }
-
-                for (int i = 0; i < _CONTAINERS.Count; i++) {
-                    _CONTAINERS[i].GetComponent<Container>().InstantiateContents();
-                    _CONTAINERS[i].GetComponent<Container>().m_Inspected = true;
                 }
 
                 FoundCon = _CONTAINERS.Count;
