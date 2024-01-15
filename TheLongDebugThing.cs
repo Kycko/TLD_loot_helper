@@ -323,21 +323,28 @@ internal sealed class DebugThing : MelonMod
                     };
 
                 string final = "[My LH] ---------------------------------------\n";
+                string fx, fz, fy;
                 for (int i = 0; i < GearManager.m_Gear.Count; i++)
                 {
                     if (GearManager.m_Gear[i])
                     {
                         GearItem Gi = GearManager.m_Gear[i];
                         GameObject GiObj = Gi.gameObject;
-                        if (Filter.Contains(CloneTrimer(Gi.gameObject.name)))
+                        if (Filter.Contains(CloneTrimer(GiObj.name)))
                         {
-
                             if (Gi.m_BeenInContainer && Gi.m_LastContainer)
                             {
                                 if (Gi.m_LastContainer.gameObject)
                                 {
-                                    _GEARS.Add(Gi.m_LastContainer.gameObject);
-                                    final += SaveGameSystem.GetNewestSaveSlotForActiveGame().m_UserDefinedName + " " + Gi.m_LastContainer.gameObject.transform.position.x + "::" + Gi.m_LastContainer.gameObject.transform.position.z + "::" + Gi.m_LastContainer.gameObject.transform.position.y + " " + Gi.m_LastContainer.gameObject.name.Replace(" (1)", "") + " " + GiObj.name + "\n";
+                                    GameObject CONT = Gi.m_LastContainer.gameObject;
+                                    _GEARS.Add(CONT);
+                                    fx = CONT.transform.position.x.ToString();
+                                    fz = CONT.transform.position.z.ToString();
+                                    fy = CONT.transform.position.y.ToString();
+                                    if (fx == "0") { fx += ",0"; }
+                                    if (fz == "0") { fz += ",0"; }
+                                    if (fy == "0") { fy += ",0"; }
+                                    final += SaveGameSystem.GetNewestSaveSlotForActiveGame().m_UserDefinedName + " " + fx + "::" + fz + "::" + fy + " " + CONT.name.Replace(" (1)", "") + " " + GiObj.name + "\n";
                                 }
                             }
                             else if (GiObj.activeSelf && Gi && !Gi.m_InPlayerInventory)
@@ -356,7 +363,13 @@ internal sealed class DebugThing : MelonMod
                                 if (!Naaa)
                                 {
                                     _GEARS.Add(GiObj);
-                                    final += SaveGameSystem.GetNewestSaveSlotForActiveGame().m_UserDefinedName + " " + GiObj.transform.position.x + "::" + GiObj.transform.position.z + "::" + GiObj.transform.position.y + " " + GiObj.name + "\n";
+                                    fx = GiObj.transform.position.x.ToString();
+                                    fz = GiObj.transform.position.z.ToString();
+                                    fy = GiObj.transform.position.y.ToString();
+                                    if (fx == "0") { fx += ",0"; }
+                                    if (fz == "0") { fz += ",0"; }
+                                    if (fy == "0") { fy += ",0"; }
+                                    final += SaveGameSystem.GetNewestSaveSlotForActiveGame().m_UserDefinedName + " " + fx + "::" + fz + "::" + fy + " " + GiObj.name + "\n";
                                 }
                             }
                         }
@@ -399,7 +412,7 @@ internal sealed class DebugThing : MelonMod
                                 break;
                             }
                         }
-                        if (!Naaa && ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().enabled)
+                        if (!Naaa && ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().enabled && ContainerManager.m_Containers[i].gameObject.name != "Lid")
                         {
                             ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().InstantiateContents();
                             ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().m_Inspected = true;
