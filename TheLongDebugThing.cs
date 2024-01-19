@@ -412,7 +412,7 @@ internal sealed class DebugThing : MelonMod
                                 break;
                             }
                         }
-                        if (!Naaa && ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().enabled && ContainerManager.m_Containers[i].gameObject.name != "Lid")
+                        if (!Naaa && ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().enabled && ContainerManager.m_Containers[i].gameObject.name != "Lid" && ContainerManager.m_Containers[i].gameObject.name != "OBJ_SmallCabinetDoorLeft")
                         {
                             ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().InstantiateContents();
                             ContainerManager.m_Containers[i].gameObject.GetComponent<Container>().m_Inspected = true;
